@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8653196099336617871}
   - component: {fileID: 2593704422816735196}
   - component: {fileID: 355388890887964412}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 4080086105986214723}
   - component: {fileID: 7794506596032747211}
   - component: {fileID: 7505594321199749980}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 2262288181578582847}
   - component: {fileID: 387395761077119364}
   - component: {fileID: 3723535284047777244}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,8 @@ GameObject:
   - component: {fileID: 6740558170984671760}
   - component: {fileID: 3011964561727451495}
   - component: {fileID: 8624877435849976340}
-  m_Layer: 0
+  - component: {fileID: 7589891310033556190}
+  m_Layer: 6
   m_Name: Ragdoll2Dfull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,6 +676,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7589891310033556190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2496262605455311911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994a0e1093b8bf14bbb48f70184deb9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goRight: 1
+  speed: 2
+  miniumTimeForNextMove: 0.5
+  maximumTimeForNextMove: 1
 --- !u!1 &4191346893001883559
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,7 +705,7 @@ GameObject:
   - component: {fileID: 3490013468803631900}
   - component: {fileID: 6293572697933400553}
   - component: {fileID: 8869830445905761742}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -871,7 +888,7 @@ GameObject:
   - component: {fileID: 3074594879839532226}
   - component: {fileID: 7689072619053671814}
   - component: {fileID: 7821560908364774022}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1030,7 +1047,7 @@ GameObject:
   - component: {fileID: 3476899038438037054}
   - component: {fileID: 6628143488522017397}
   - component: {fileID: 8219709611025169406}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

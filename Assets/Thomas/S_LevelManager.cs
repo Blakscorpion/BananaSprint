@@ -14,7 +14,7 @@ public class S_LevelManager : MonoBehaviour
     public Camera MainCam;
 
     float _currentOffset = 0;
-    float _currentFloorScaleX = 1.3f;
+    float _currentFloorScaleX = 0.9f;
     Vector3 OriginPosition;
     List<GameObject> _floorSpawned = new List<GameObject>();
 
@@ -28,12 +28,6 @@ public class S_LevelManager : MonoBehaviour
     {
         //Init floor 
         AddFloor(StartFloorAmount, false);
-
-        //Init Cam at right size based on parameter
-        //Vector3 newPosCam = new Vector3(0, 0.25f + offsetBetweenFloor * 1.25f, -6);
-        //MainCam.transform.position = newPosCam;
-
-        //MainCam.orthographicSize = offsetBetweenFloor * 1.5f;
     }
 
     void AddFloor(int _amount = 1, bool _animation = true)
@@ -43,12 +37,9 @@ public class S_LevelManager : MonoBehaviour
         {
             InstantiateFloor();
         }
-        _currentFloorScaleX += 0.6f;
+        _currentFloorScaleX += 0.5f;
 
-        foreach(GameObject _floor in _floorSpawned)
-        {
-            _floor.transform.DOScaleX(_currentFloorScaleX, AnimationTime);
-        }
+        AnimateGameMesh();
 
         if (_animation)
         {
@@ -57,6 +48,7 @@ public class S_LevelManager : MonoBehaviour
             float newCamTransformPosY = MainCam.transform.position.y + 1.5f * _amount;
 
             MainCamAnimation(newCamOrthoSize, newCamTransformPosY);
+
         }
     }
     void MainCamAnimation(float _newCamOrthoSize, float _newCamTransformPosY)
@@ -70,6 +62,20 @@ public class S_LevelManager : MonoBehaviour
         mySequence.Play();
     }
 
+    float beginDoorPos = 3.75f;
+    float doorPosOffset = 3.25f;
+    void AnimateGameMesh()
+    {
+        beginDoorPos += doorPosOffset;
+        foreach (GameObject _floor in _floorSpawned)
+        {
+            _floor.transform.GetChild(0).DOScaleX(_currentFloorScaleX, AnimationTime);
+
+            _floor.transform.GetChild(1).DOMoveX(beginDoorPos, AnimationTime);
+            _floor.transform.GetChild(2).DOMoveX(-beginDoorPos, AnimationTime);
+        }
+    }
+
     void InstantiateFloor()
     {
         //Instantiate Floor
@@ -78,8 +84,8 @@ public class S_LevelManager : MonoBehaviour
         _tmpFloor = Instantiate(Floor, vectorOffset, Quaternion.identity);
 
         //Change Scale to fit new Camera Ortho size
-        Vector3 _tmpFloorScale = _tmpFloor.transform.localScale;
-        _tmpFloor.transform.localScale = new Vector3(_currentFloorScaleX, _tmpFloorScale.y, _tmpFloorScale.z);
+        Vector3 _tmpFloorScale = _tmpFloor.transform.GetChild(0).localScale;
+        _tmpFloor.transform.GetChild(0).localScale = new Vector3(_currentFloorScaleX, _tmpFloorScale.y, _tmpFloorScale.z);
 
         _floorSpawned.Add(_tmpFloor);
 
