@@ -15,7 +15,7 @@ public class S_NPC : MonoBehaviour
     private void Start()
     {
         StartCoroutine(WalkBehavior());
-        _rb = GetComponent<Rigidbody2D>();
+        _rb = transform.GetChild(0).GetComponent<Rigidbody2D>();
     }
     
 
@@ -31,6 +31,11 @@ public class S_NPC : MonoBehaviour
     {
         if (collision.gameObject.tag == "wall")
             speed *= -1;
+
+        if(collision.gameObject.tag == "item")
+        {
+            StartCoroutine(DelayBeforeForce());
+        }
     }
 
     /// <summary>
@@ -43,8 +48,16 @@ public class S_NPC : MonoBehaviour
         _rb.AddForce(_force * direction);
     }
 
-    //The coroutine that make stop or walk the ia, base on random
-    IEnumerator WalkBehavior()
+    IEnumerator DelayBeforeForce()
+    {
+        yield return new WaitForSeconds(0.05f);
+        RigidBodyAddForce(1000, speed > 0 ? Vector3.right : Vector3.left);
+        print(goRight);
+    }
+
+
+        //The coroutine that make stop or walk the ia, base on random
+        IEnumerator WalkBehavior()
     {
         while (true)
         {
