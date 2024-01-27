@@ -712,6 +712,7 @@ MonoBehaviour:
   - {fileID: 4191346893001883559}
   - {fileID: 1984124210353515470}
   - {fileID: 9106638999014665318}
+  fallingTimerInSeconds: 1
 --- !u!1 &4191346893001883559
 GameObject:
   m_ObjectHideFlags: 0

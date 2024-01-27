@@ -9,13 +9,17 @@ public class ragdoldeath : MonoBehaviour
     Animator animator;
     public GameObject[] bodyParts;
     private S_BaseItem item;
+    public int fallingTimerInSeconds;
+    Vector2 directionForce;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        
+
     }
 
     // Update is called once per frame
@@ -49,10 +53,37 @@ public class ragdoldeath : MonoBehaviour
 
             Debug.Log("Collision with Item : " + item.name);
             DeathOfRagdoll();
+            StartCoroutine(OneSecondTimer());
 
             // Do action according to S_NPC properties/methods //
+        }
+    }
 
-            this.gameObject.GetComponent<S_NPC>().enabled = false;
+    private IEnumerator OneSecondTimer()
+    {
+        // Wait for 1 second
+        yield return new WaitForSeconds(1f);
+
+        // Do something after 1 second
+        Debug.Log("1-second timer reached!");
+        for (int i = 0; i < bodyParts.Length; i++)
+        {
+            bodyParts[i].GetComponent<Rigidbody2D>().isKinematic = false;
+            bodyParts[i].GetComponent<Collider2D>().enabled = false;
+        }
+    }
+
+    private IEnumerator QuickDisablingFLoor()
+    {
+        // Wait for 1 second
+        yield return new WaitForSeconds(0.2f);
+
+        // Do something after 1 second
+        Debug.Log("Floor has been disabled for 0.2s");
+        for (int i = 0; i < bodyParts.Length; i++)
+        {
+            bodyParts[i].GetComponent<Rigidbody2D>().isKinematic = false;
+            bodyParts[i].GetComponent<Collider2D>().enabled = true;
         }
     }
 }

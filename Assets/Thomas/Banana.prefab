@@ -192,3 +192,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a69aa29d845edf4faea4e9b7a9d36f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force: 1000
+  direction: {x: 1, y: 0, z: 0}
