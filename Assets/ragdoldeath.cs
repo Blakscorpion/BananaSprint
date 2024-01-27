@@ -50,7 +50,6 @@ public class ragdoldeath : MonoBehaviour
             for (int i = 0; i < bodyParts.Length; i++)
             {  
                 bodyParts[i].GetComponent<BoxCollider2D>().enabled = false;
-                Debug.Log("STATUS IS : " + bodyParts[i].GetComponent<Collider2D>().enabled);
             }
             //Quickly re-enabling thecolliders to let the ragdoll stands on the next floor
             Invoke(nameof(QuickFloorEnabling), 0.4f);
