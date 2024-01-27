@@ -11,6 +11,7 @@ public class ragdoldeath : MonoBehaviour
     private S_BaseItem item;
     public int fallingTimerInSeconds;
     Vector2 directionForce;
+    bool alreadyFallen = false;
 
 
     // Start is called before the first frame update
@@ -48,22 +49,20 @@ public class ragdoldeath : MonoBehaviour
         if (collision.gameObject.tag == "item")
         {
             item = collision.gameObject.GetComponent<S_BaseItem>();
-            // Do action according to Item properties //
-            
-
             Debug.Log("Collision with Item : " + item.name);
             DeathOfRagdoll();
-            StartCoroutine(OneSecondTimer());
-            
+            GetComponent<S_NPC>().enabled = false;
+            Invoke(nameof(OneSecondTimer), 1.0f);
+        }
 
-            // Do action according to S_NPC properties/methods //
+        if (collision.gameObject.tag == "npc")
+        {
+            StartCoroutine(QuickFloorDisabling());
         }
     }
 
-    private IEnumerator OneSecondTimer()
+    private void OneSecondTimer()
     {
-        // Wait for 1 second
-        yield return new WaitForSeconds(1f);
 
         // Do something after 1 second
         Debug.Log("1-second timer reached!");
@@ -78,10 +77,10 @@ public class ragdoldeath : MonoBehaviour
     private IEnumerator QuickFloorDisabling()
     {
         // Wait for 1 second
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
 
         // Do something after 0.2 second
-        Debug.Log("0.2-second timer reached!");
+        Debug.Log("0.4-second timer reached!");
         for (int i = 0; i < bodyParts.Length; i++)
         {
             bodyParts[i].GetComponent<Rigidbody2D>().isKinematic = false;
