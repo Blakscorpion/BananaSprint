@@ -57,6 +57,10 @@ public class ragdoldeath : MonoBehaviour
 
         if (collision.gameObject.tag == "npc")
         {
+            for (int i = 0; i < bodyParts.Length; i++)
+            {
+                bodyParts[i].GetComponent<Collider2D>().enabled = false;
+            }
             StartCoroutine(QuickFloorDisabling());
         }
     }
@@ -75,10 +79,7 @@ public class ragdoldeath : MonoBehaviour
 
     private IEnumerator QuickFloorDisabling()
     {
-        for (int i = 0; i < bodyParts.Length; i++)
-        {
-            bodyParts[i].GetComponent<Collider2D>().enabled = false;
-        }
+        
         // Wait for 1 second
         yield return new WaitForSeconds(0.4f);
 
