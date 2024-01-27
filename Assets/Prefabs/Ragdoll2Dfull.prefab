@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 6212744460898276760}
   m_Layer: 6
   m_Name: Ragdoll2Dfull
-  m_TagString: Untagged
+  m_TagString: npc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

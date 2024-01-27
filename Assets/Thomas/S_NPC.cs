@@ -9,17 +9,19 @@ public class S_NPC : MonoBehaviour
 
     public float miniumTimeForNextMove = 0.5f, maximumTimeForNextMove = 1f;
 
-    bool walk = true;
+    Rigidbody2D _rb;
+    bool _walk = true;
 
     private void Start()
     {
         StartCoroutine(WalkBehavior());
+        _rb = GetComponent<Rigidbody2D>();
     }
     
 
     void Update()
     {
-        if (walk)
+        if (_walk)
         {
             gameObject.transform.position += Vector3.right * speed * Time.deltaTime;
         }
@@ -31,6 +33,16 @@ public class S_NPC : MonoBehaviour
             speed *= -1;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="_force">In Newton</param>
+    /// <param name="direction">Normalize values before use</param>
+    void RigidBodyAddForce(float _force, Vector3 direction)
+    {
+        _rb.AddForce(_force * direction);
+    }
+
     //The coroutine that make stop or walk the ia, base on random
     IEnumerator WalkBehavior()
     {
@@ -39,7 +51,7 @@ public class S_NPC : MonoBehaviour
             float waitTime = Random.Range(miniumTimeForNextMove, maximumTimeForNextMove);
             yield return new WaitForSeconds(waitTime);
 
-            walk = Random.value > 0.5f;
+            _walk = Random.value > 0.5f;
         }
     }
 }
