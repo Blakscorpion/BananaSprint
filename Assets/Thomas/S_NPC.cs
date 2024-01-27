@@ -34,7 +34,8 @@ public class S_NPC : MonoBehaviour
 
         if(collision.gameObject.tag == "item")
         {
-            StartCoroutine(DelayBeforeForce());
+            StartCoroutine(DelayBeforeForceBanana());
+            gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Ragdoll");
         }
     }
 
@@ -48,7 +49,7 @@ public class S_NPC : MonoBehaviour
         _rb.AddForce(_force * direction);
     }
 
-    IEnumerator DelayBeforeForce()
+    IEnumerator DelayBeforeForceBanana()
     {
         yield return new WaitForSeconds(0.05f);
         RigidBodyAddForce(1000, speed > 0 ? Vector3.right : Vector3.left);
