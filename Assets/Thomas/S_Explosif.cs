@@ -15,7 +15,6 @@ public class S_Explosif : S_BaseItem
 
     public override Vector3 GetDirection(float speed, Vector3 position)
     {
-        print("fezzef");
         return (position - gameObject.transform.position).normalized;
     }
 
