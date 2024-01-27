@@ -54,6 +54,7 @@ public class ragdoldeath : MonoBehaviour
             Debug.Log("Collision with Item : " + item.name);
             DeathOfRagdoll();
             StartCoroutine(OneSecondTimer());
+            
 
             // Do action according to S_NPC properties/methods //
         }
@@ -71,15 +72,16 @@ public class ragdoldeath : MonoBehaviour
             bodyParts[i].GetComponent<Rigidbody2D>().isKinematic = false;
             bodyParts[i].GetComponent<Collider2D>().enabled = false;
         }
+        StartCoroutine(QuickFloorDisabling());
     }
 
-    private IEnumerator QuickDisablingFLoor()
+    private IEnumerator QuickFloorDisabling()
     {
         // Wait for 1 second
         yield return new WaitForSeconds(0.2f);
 
-        // Do something after 1 second
-        Debug.Log("Floor has been disabled for 0.2s");
+        // Do something after 0.2 second
+        Debug.Log("0.2-second timer reached!");
         for (int i = 0; i < bodyParts.Length; i++)
         {
             bodyParts[i].GetComponent<Rigidbody2D>().isKinematic = false;
