@@ -19,7 +19,10 @@ public class ragdoldeath : MonoBehaviour
 
     void DeathOfRagdoll()
     {
-        animator.enabled = false;
+        if (animator != null)
+        {
+            animator.enabled = false;
+        }
         gameObject.GetComponent<Collider2D>().enabled = false;
 
         for (int i = 0; i < bodyParts.Length; i++)
@@ -35,7 +38,9 @@ public class ragdoldeath : MonoBehaviour
         if (collision.gameObject.tag == "item" || collision.gameObject.tag == "head")
         {
             DeathOfRagdoll();
+            if (GetComponent<S_NPC>()) { 
             GetComponent<S_NPC>().enabled = false;
+            }
             Invoke(nameof(OneSecondTimer), 1.0f);
         }
 
