@@ -26,4 +26,10 @@ public abstract class S_BaseItem : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+
+    public virtual Vector3 GetDirection(float speed, Vector3 position)
+    {
+        return Vector3.zero;
+    }
 }

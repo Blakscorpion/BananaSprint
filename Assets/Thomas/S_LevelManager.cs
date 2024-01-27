@@ -39,7 +39,7 @@ public class S_LevelManager : MonoBehaviour
         }
         _currentFloorScaleX += 0.5f;
 
-        AnimateGameMesh();
+        //AnimateGameMesh();
 
         if (_animation)
         {
