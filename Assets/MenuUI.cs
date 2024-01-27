@@ -29,9 +29,12 @@ public class MenuUI : MonoBehaviour
         if (!isMenuVisible) {
             menuPanelUI.SetActive(true);
             isMenuVisible = true;
+            Time.timeScale = 0;
         }
         else {
             menuPanelUI.SetActive(false);
-            isMenuVisible = false;                }
+            isMenuVisible = false;
+            Time.timeScale = 1;
+        }
     }
 }
