@@ -68,7 +68,6 @@ public class ragdoldeath : MonoBehaviour
         Debug.Log("1-second timer reached!");
         for (int i = 0; i < bodyParts.Length; i++)
         {
-            bodyParts[i].GetComponent<Rigidbody2D>().isKinematic = false;
             bodyParts[i].GetComponent<Collider2D>().enabled = false;
         }
         StartCoroutine(QuickFloorDisabling());
@@ -76,6 +75,10 @@ public class ragdoldeath : MonoBehaviour
 
     private IEnumerator QuickFloorDisabling()
     {
+        for (int i = 0; i < bodyParts.Length; i++)
+        {
+            bodyParts[i].GetComponent<Collider2D>().enabled = false;
+        }
         // Wait for 1 second
         yield return new WaitForSeconds(0.4f);
 
@@ -83,7 +86,6 @@ public class ragdoldeath : MonoBehaviour
         Debug.Log("0.4-second timer reached!");
         for (int i = 0; i < bodyParts.Length; i++)
         {
-            bodyParts[i].GetComponent<Rigidbody2D>().isKinematic = false;
             bodyParts[i].GetComponent<Collider2D>().enabled = true;
         }
     }
