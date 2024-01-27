@@ -12,8 +12,18 @@ public abstract class S_BaseItem : MonoBehaviour
     {
         if(collision.gameObject.tag == "npc")
         {
-
             this.gameObject.GetComponent<Collider2D>().enabled = false;
+            Invoke(nameof(WaitSecond), 3.0f);
         }
+    }
+
+    void WaitSecond()
+    {
+        this.gameObject.GetComponent<Collider2D>().enabled = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(gameObject);
     }
 }

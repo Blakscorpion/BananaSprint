@@ -68,4 +68,10 @@ public class S_NPC : MonoBehaviour
             _walk = Random.value > 0.5f;
         }
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(gameObject);
+    }
 }
