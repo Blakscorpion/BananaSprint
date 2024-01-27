@@ -8,6 +8,8 @@ public class ragdoldeath : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     public GameObject[] bodyParts;
+    private S_BaseItem item;
+
     
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,23 @@ public class ragdoldeath : MonoBehaviour
         {
             bodyParts[i].GetComponent<Rigidbody2D>().isKinematic = false;
             bodyParts[i].GetComponent<Collider2D>().enabled=true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "item")
+        {
+            item = collision.gameObject.GetComponent<S_BaseItem>();
+            // Do action according to Item properties //
+            
+
+            Debug.Log("Collision with Item : " + item.name);
+            DeathOfRagdoll();
+
+            // Do action according to S_NPC properties/methods //
+
+            this.gameObject.GetComponent<S_NPC>().enabled = false;
         }
     }
 }
