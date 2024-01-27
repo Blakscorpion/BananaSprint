@@ -565,6 +565,7 @@ GameObject:
   - component: {fileID: 3011964561727451495}
   - component: {fileID: 8624877435849976340}
   - component: {fileID: 7589891310033556190}
+  - component: {fileID: 6212744460898276760}
   m_Layer: 6
   m_Name: Ragdoll2Dfull
   m_TagString: Untagged
@@ -692,6 +693,25 @@ MonoBehaviour:
   speed: 2
   miniumTimeForNextMove: 0.5
   maximumTimeForNextMove: 1
+--- !u!114 &6212744460898276760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2496262605455311911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25c979298dfc3e428e94dd18b0d566e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyParts:
+  - {fileID: 8067581276354764744}
+  - {fileID: 2138921311091191792}
+  - {fileID: 2284638406723260117}
+  - {fileID: 4191346893001883559}
+  - {fileID: 1984124210353515470}
+  - {fileID: 9106638999014665318}
 --- !u!1 &4191346893001883559
 GameObject:
   m_ObjectHideFlags: 0
