@@ -8,29 +8,14 @@ public class ragdoldeath : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     public GameObject[] bodyParts;
-    private S_BaseItem item;
-    public int fallingTimerInSeconds;
-    Vector2 directionForce;
-    bool alreadyFallen = false;
-
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DeathOfRagdoll();
-        }
-    }
 
     void DeathOfRagdoll()
     {
@@ -40,16 +25,15 @@ public class ragdoldeath : MonoBehaviour
         for (int i = 0; i < bodyParts.Length; i++)
         {
             bodyParts[i].GetComponent<Rigidbody2D>().isKinematic = false;
-            bodyParts[i].GetComponent<Collider2D>().enabled=true;
+            bodyParts[i].GetComponent<BoxCollider2D>().enabled=true;
         }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "item")
+        if (collision.gameObject.tag == "item" || collision.gameObject.tag == "head")
         {
-            item = collision.gameObject.GetComponent<S_BaseItem>();
-            Debug.Log("Collision with Item : " + item.name);
             DeathOfRagdoll();
             GetComponent<S_NPC>().enabled = false;
             Invoke(nameof(OneSecondTimer), 1.0f);
@@ -57,37 +41,31 @@ public class ragdoldeath : MonoBehaviour
 
         if (collision.gameObject.tag == "npc")
         {
+            //Disabling colider to let the ragdol fall
             for (int i = 0; i < bodyParts.Length; i++)
-            {
-                bodyParts[i].GetComponent<Collider2D>().enabled = false;
+            {  
+                bodyParts[i].GetComponent<BoxCollider2D>().enabled = false;
+                Debug.Log("STATUS IS : " + bodyParts[i].GetComponent<Collider2D>().enabled);
             }
-            StartCoroutine(QuickFloorDisabling());
+            //Quickly re-enabling thecolliders to let the ragdoll stands on the next floor
+            Invoke(nameof(QuickFloorEnabling), 0.4f);
         }
     }
 
     private void OneSecondTimer()
     {
-
-        // Do something after 1 second
-        Debug.Log("1-second timer reached!");
         for (int i = 0; i < bodyParts.Length; i++)
         {
-            bodyParts[i].GetComponent<Collider2D>().enabled = false;
+            bodyParts[i].GetComponent<BoxCollider2D>().enabled = false;
         }
-        StartCoroutine(QuickFloorDisabling());
+        Invoke(nameof(QuickFloorEnabling), 0.6f);
     }
 
-    private IEnumerator QuickFloorDisabling()
-    {
-        
-        // Wait for 1 second
-        yield return new WaitForSeconds(0.4f);
-
-        // Do something after 0.2 second
-        Debug.Log("0.4-second timer reached!");
+    private void QuickFloorEnabling()
+    { 
         for (int i = 0; i < bodyParts.Length; i++)
         {
-            bodyParts[i].GetComponent<Collider2D>().enabled = true;
+            bodyParts[i].GetComponent<BoxCollider2D>().enabled = true;
         }
     }
 }
