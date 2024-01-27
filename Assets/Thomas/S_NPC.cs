@@ -52,7 +52,7 @@ public class S_NPC : MonoBehaviour
     IEnumerator DelayBeforeForce(S_BaseItem item)
     {
         yield return new WaitForSeconds(0.05f);
-        RigidBodyAddForce(1000, item.GetDirection(speed, _rb.gameObject.transform.position));
+        RigidBodyAddForce(10000, item.GetDirection(speed, _rb.gameObject.transform.position));
         print(goRight);
     }
 
