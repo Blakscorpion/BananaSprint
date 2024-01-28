@@ -314,17 +314,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895599690542926464}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.24961951, w: 0.96834403}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8243971733447783875}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 28.91}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: 0}
-  m_SizeDelta: {x: 20, y: 20}
+  m_AnchoredPosition: {x: 79.5, y: 5.5}
+  m_SizeDelta: {x: 36.2985, y: 36.2989}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1469898171588116063
 CanvasRenderer:
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ff9c7bb93d046b94a941c015277284d6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1062,7 +1062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.91442156, g: 0.9169811, b: 0.58652186, a: 1}
+  m_Color: {r: 0.88067734, g: 0.8867924, b: 0.37312207, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1972,7 +1972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f11f76d3c3259d439e7f307a185543e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsBeforeNextWeapon: 1000
+  pointsBeforeNextWeapon: 10000
 --- !u!1 &7432129566908861702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,6 +2251,7 @@ GameObject:
   - component: {fileID: 3597885061808045402}
   - component: {fileID: 548047860259866442}
   - component: {fileID: 5590465271333719054}
+  - component: {fileID: 624095555446079668}
   m_Layer: 5
   m_Name: MenuItemSelection
   m_TagString: Untagged
@@ -2320,6 +2321,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &624095555446079668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8554952260443332849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed79b27db56fa5246bccef61bbe1902a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item1: {fileID: 1628881727362240795}
+  Item2: {fileID: 2067085239544873875}
+  Item3: {fileID: 1622686776097356511}
+  Item4: {fileID: 2905818093464042860}
+  SliderInfo: {fileID: 1554106991883281545}
 --- !u!1 &8815652554535540559
 GameObject:
   m_ObjectHideFlags: 0
