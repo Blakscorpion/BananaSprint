@@ -10,6 +10,7 @@ public class S_FireHydrant : S_BaseItem
     bool alreadyTrigger = false;
     bool isTrigger = false;
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "npc")

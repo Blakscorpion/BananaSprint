@@ -78,9 +78,9 @@ public class S_NPC : MonoBehaviour
     //Put on death
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "item")
+        if (collision.gameObject.tag == "firehydrant")
         {
-            S_BaseItem tmp = collision.gameObject.GetComponent<S_BaseItem>();
+            S_BaseItem tmp = collision.gameObject.GetComponentInParent<S_BaseItem>();
 
             RigidBodyAddForce(tmp.force, tmp.direction);
         }

@@ -9,6 +9,7 @@ TagManager:
   - npc
   - head
   - deathzone
+  - firehydrant
   layers:
   - Default
   - TransparentFX
