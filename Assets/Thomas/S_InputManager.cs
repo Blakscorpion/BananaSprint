@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class S_InputManager : MonoBehaviour
 {
-    public GameObject banana;
+    public List<GameObject> items = new List<GameObject>();
+
+    public GameObject itemSelected;
+    private void Start()
+    {
+        itemSelected = items[0];
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && Time.timeScale != 0)
@@ -14,7 +20,12 @@ public class S_InputManager : MonoBehaviour
 
             worldPosition.z = 0;
 
-            Instantiate(banana, worldPosition, Quaternion.identity);
+            Instantiate(itemSelected, worldPosition, Quaternion.identity);
         }
+    }
+
+    public void SelectItem(int number)
+    {
+        itemSelected = items[number];
     }
 }
