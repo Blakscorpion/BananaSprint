@@ -128,6 +128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8b7efab3909024bb60cffd20344a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  templateEntity:
+  - {fileID: 2496262605455311911, guid: 538bc6b9e49fc564888c761ed770c07e, type: 3}
+  - {fileID: 2496262605455311911, guid: 2ac1adc53f9f32749a0c21a3629c1c7a, type: 3}
+  - {fileID: 2496262605455311911, guid: 8ab074a40505d07438197442682c6319, type: 3}
+  - {fileID: 2496262605455311911, guid: 0dd674e32e4a8614b9f957bf99bb6227, type: 3}
   entityPrefab: {fileID: 2496262605455311911, guid: 2ac1adc53f9f32749a0c21a3629c1c7a, type: 3}
   minSpawnInterval: 2
   maxSpawnInterval: 5

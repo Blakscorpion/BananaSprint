@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class S_Spawner : MonoBehaviour
 {
+    public List<GameObject> templateEntity = new List<GameObject>();
     public GameObject entityPrefab;
     public float minSpawnInterval = 3f;
     public float maxSpawnInterval = 5f;
@@ -22,7 +23,7 @@ public class S_Spawner : MonoBehaviour
                 float spawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
                 yield return new WaitForSeconds(spawnInterval);
 
-                Instantiate(entityPrefab, transform.position, Quaternion.identity);
+                Instantiate(templateEntity[Random.Range(0, templateEntity.Count)], transform.position, Quaternion.identity);
                 S_SpawnerStatic.entityAmount++;
             }
         }
