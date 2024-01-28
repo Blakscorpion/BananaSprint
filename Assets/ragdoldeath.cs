@@ -41,7 +41,7 @@ public class ragdoldeath : MonoBehaviour
         {
             DeathOfRagdoll();
             if (GetComponent<S_NPC>()) { 
-            GetComponent<S_NPC>().enabled = false;
+            GetComponent<S_NPC>().isWalking = false;
             }
             Invoke(nameof(OneSecondTimer), 1.0f);
             SwitchHead();

@@ -28,9 +28,4 @@ public class S_Explosif : S_BaseItem
     {
         Destroy(gameObject);
     } 
-
-    public override void Interact(GameObject entity)
-    {
-        
-    }
 }

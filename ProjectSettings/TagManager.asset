@@ -8,6 +8,7 @@ TagManager:
   - item
   - npc
   - head
+  - deathzone
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,7 @@ public class S_NPC : MonoBehaviour
 {
     public bool goRight = true;
     public float speed = 2;
+    public bool isWalking = true;
 
     public float miniumTimeForNextMove = 0.5f, maximumTimeForNextMove = 1f;
 
@@ -21,7 +22,7 @@ public class S_NPC : MonoBehaviour
 
     void Update()
     {
-        if (_walk)
+        if (isWalking && _walk)
         {
             gameObject.transform.position += Vector3.right * speed * Time.deltaTime;
         }
@@ -30,7 +31,12 @@ public class S_NPC : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "wall")
+        {
             speed *= -1;
+            gameObject.transform.localScale = new Vector3(Mathf.Clamp(-speed, -1, 1),
+                gameObject.transform.localScale.y,
+                gameObject.transform.localScale.z);
+        }
 
         if(collision.gameObject.tag == "item")
         {
@@ -53,7 +59,6 @@ public class S_NPC : MonoBehaviour
     {
         yield return new WaitForSeconds(0.05f);
         RigidBodyAddForce(10000, item.GetDirection(speed, _rb.gameObject.transform.position));
-        print(goRight);
     }
 
 
@@ -70,8 +75,21 @@ public class S_NPC : MonoBehaviour
     }
 
 
+    //Put on death
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "item")
+        {
+            S_BaseItem tmp = collision.gameObject.GetComponent<S_BaseItem>();
+
+            RigidBodyAddForce(tmp.force, tmp.direction);
+        }
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if(collision.gameObject.tag == "deathzone")
+            Destroy(gameObject);
     }
 }
