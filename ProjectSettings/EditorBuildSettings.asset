@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 617aa0d214571674e8e5d650516be84b
+  - enabled: 1
+    path: Assets/Scenes/LevelSelection.unity
+    guid: 3b4df109f6d06464fa78eb891fc32fda
+  - enabled: 1
+    path: Assets/Thomas/Toto.unity
+    guid: 6415cabc34f34564d8207d9767189ef9
   m_configObjects: {}
