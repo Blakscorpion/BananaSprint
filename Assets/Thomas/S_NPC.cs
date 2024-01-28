@@ -47,6 +47,15 @@ public class S_NPC : MonoBehaviour
             StartCoroutine(DelayBeforeForce(collision.gameObject.GetComponent<S_BaseItem>()));
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Ragdoll");
         }
+
+        if(collision.gameObject.tag == "chilly")
+        {
+            Destroy(collision.gameObject);
+            gameObject.layer = LayerMask.NameToLayer("Ragdoll");
+            gameObject.tag = "head";
+            speed *= 3;
+            _rb.mass = 6000;
+        }
     }
 
     /// <summary>

@@ -66,6 +66,7 @@ public class ragdoldeath : MonoBehaviour
             GetComponent<S_NPC>().isWalking = false;
             }
             Invoke(nameof(OneSecondTimer), 1.0f);
+            ScoringManager.instance.AddScore();
         }
 
         if (collision.gameObject.tag == "npc")
@@ -77,7 +78,7 @@ public class ragdoldeath : MonoBehaviour
             }
             //Quickly re-enabling thecolliders to let the ragdoll stands on the next floor
             Invoke(nameof(QuickFloorEnabling), 0.4f);
-            
+            ScoringManager.instance.AddScore();
         }
     }
 

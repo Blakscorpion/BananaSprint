@@ -399,7 +399,7 @@ PrefabInstance:
     - target: {fileID: 951883443841961375, guid: d0e27dc2269c119429819a66eb8bf413, type: 3}
       propertyPath: banana
       value: 
-      objectReference: {fileID: 2479787010594601598, guid: d8f44005a11b4314eaa8747a0c36bd94, type: 3}
+      objectReference: {fileID: 2479787010594601598, guid: 5482b07862ed05f42a860752134f6d2c, type: 3}
     - target: {fileID: 2620202940143857792, guid: d0e27dc2269c119429819a66eb8bf413, type: 3}
       propertyPath: orthographic
       value: 1
