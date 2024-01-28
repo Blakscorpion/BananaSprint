@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +12,15 @@ public class ragdoldeath : MonoBehaviour
     public Sprite happyFace;
     public GameObject headTransform;
 
+    public GameObject FXSmoke;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        FXSmoke.gameObject.SetActive(false);
+
     }
 
 
@@ -67,6 +72,8 @@ public class ragdoldeath : MonoBehaviour
             }
             Invoke(nameof(OneSecondTimer), 1.0f);
             ScoringManager.instance.AddScore();
+            StartCoroutine(FX());
+
         }
 
         if (collision.gameObject.tag == "npc")
@@ -79,6 +86,21 @@ public class ragdoldeath : MonoBehaviour
             //Quickly re-enabling thecolliders to let the ragdoll stands on the next floor
             Invoke(nameof(QuickFloorEnabling), 0.4f);
             ScoringManager.instance.AddScore();
+
+            StartCoroutine(FX());
+        }
+    }
+
+    IEnumerator FX()
+    {
+        if (FXSmoke)
+        {
+            FXSmoke.gameObject.SetActive(true);
+            FXSmoke.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+            FXSmoke.transform.DOScale(0.1f, 0.2f);
+
+            yield return new WaitForSeconds(0.2f);
+            FXSmoke.gameObject.SetActive(false);
         }
     }
 
