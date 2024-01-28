@@ -694,6 +694,7 @@ MonoBehaviour:
   isWalking: 1
   miniumTimeForNextMove: 0.5
   maximumTimeForNextMove: 1
+  _rb: {fileID: 0}
 --- !u!114 &6212744460898276760
 MonoBehaviour:
   m_ObjectHideFlags: 0

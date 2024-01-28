@@ -10,6 +10,7 @@ TagManager:
   - head
   - deathzone
   - firehydrant
+  - washer
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - UI
   - NonRagdoll
   - Ragdoll
-  - 
-  - 
+  - floor
+  - ignoreFloor
   - 
   - 
   - 

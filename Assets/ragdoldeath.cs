@@ -32,9 +32,31 @@ public class ragdoldeath : MonoBehaviour
             bodyParts[i].GetComponent<Rigidbody2D>().isKinematic = false;
             bodyParts[i].GetComponent<BoxCollider2D>().enabled=true;
         }
-        
-    }
 
+        SwitchHead();
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //if (collision.gameObject.tag == "firehydrant")
+        //{
+        //    DeathOfRagdoll();
+        //    if (GetComponent<S_NPC>())
+        //    {
+        //        GetComponent<S_NPC>().isWalking = false;
+        //    }
+        //}
+        //
+        //if (collision.gameObject.tag == "washer")
+        //{
+        //    DeathOfRagdoll();
+        //    if (GetComponent<S_NPC>())
+        //    {
+        //        GetComponent<S_NPC>().isWalking = false;
+        //    }
+        //    Invoke(nameof(OneSecondTimer), 1.0f);
+        //}
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "item" || collision.gameObject.tag == "head")
@@ -44,7 +66,6 @@ public class ragdoldeath : MonoBehaviour
             GetComponent<S_NPC>().isWalking = false;
             }
             Invoke(nameof(OneSecondTimer), 1.0f);
-            SwitchHead();
         }
 
         if (collision.gameObject.tag == "npc")
@@ -56,7 +77,7 @@ public class ragdoldeath : MonoBehaviour
             }
             //Quickly re-enabling thecolliders to let the ragdoll stands on the next floor
             Invoke(nameof(QuickFloorEnabling), 0.4f);
-            SwitchHead();
+            
         }
     }
 

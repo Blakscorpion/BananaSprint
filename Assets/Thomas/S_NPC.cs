@@ -10,7 +10,7 @@ public class S_NPC : MonoBehaviour
 
     public float miniumTimeForNextMove = 0.5f, maximumTimeForNextMove = 1f;
 
-    Rigidbody2D _rb;
+    public Rigidbody2D _rb;
     bool _walk = true;
 
     private void Start()
@@ -22,6 +22,10 @@ public class S_NPC : MonoBehaviour
 
     void Update()
     {
+        if (gameObject.transform.position.y <= -100)
+        {
+            Destroy(gameObject);
+        }
         if (isWalking && _walk)
         {
             gameObject.transform.position += Vector3.right * speed * Time.deltaTime;
@@ -50,7 +54,7 @@ public class S_NPC : MonoBehaviour
     /// </summary>
     /// <param name="_force">In Newton</param>
     /// <param name="direction">Normalize values before use</param>
-    void RigidBodyAddForce(float _force, Vector3 direction)
+    public void RigidBodyAddForce(float _force, Vector3 direction)
     {
         _rb.AddForce(_force * direction);
     }
@@ -84,12 +88,9 @@ public class S_NPC : MonoBehaviour
 
             RigidBodyAddForce(tmp.force, tmp.direction);
         }
+
+        //if (collision.gameObject.tag == "washer")
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "deathzone")
-            Destroy(gameObject);
-    }
 }
