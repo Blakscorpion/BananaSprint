@@ -12,11 +12,13 @@ public class ExitGame : MonoBehaviour
 
     public void backGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public void ReturnToLevelSelection()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
 }
