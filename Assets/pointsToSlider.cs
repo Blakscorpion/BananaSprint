@@ -20,7 +20,7 @@ public class pointsToSlider : MonoBehaviour
 
     void Update()
     {
-        currentPoints = ScoringManager.instance.currentScore;
+        currentPoints = ScoringManager.instance.currentScore % pointsBeforeNextWeapon;
         currentSliderValue = currentPoints / pointsBeforeNextWeapon;
         _slider.value = currentSliderValue;
     }

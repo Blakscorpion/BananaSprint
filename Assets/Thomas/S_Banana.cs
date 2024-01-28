@@ -9,7 +9,7 @@ public class S_Banana : S_BaseItem
         return speed > 0 ? Vector3.right : Vector3.left;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "npc")
         {

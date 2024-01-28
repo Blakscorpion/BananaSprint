@@ -20,6 +20,7 @@ public class S_Washer : S_BaseItem
             if (!alreadyTrigger)
             {
                 triggerBox.enabled = true;
+                Invoke(nameof(Desactivate), 5);
                 //Invoke(nameof(Desactivate), delayBeforeDesactivation);
             }
 
@@ -27,5 +28,20 @@ public class S_Washer : S_BaseItem
         }
     }
 
-    
+    private void Desactivate()
+    {
+        Rigidbody2D collision2D = gameObject.GetComponent<Rigidbody2D>();
+        collision2D.AddTorque(Random.Range(350, 600));
+        collision2D.AddForce(new Vector2(Random.Range(-100000, 100000), Random.Range(100000, 300000)));
+
+        this.gameObject.GetComponent<Collider2D>().enabled = false;
+        Invoke(nameof(WaitSecond), 3.0f);
+
+    }
+    void WaitSecond()
+    {
+        this.gameObject.GetComponent<Collider2D>().enabled = true;
+    }
+
+
 }
