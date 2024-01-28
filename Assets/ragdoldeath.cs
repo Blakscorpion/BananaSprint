@@ -8,6 +8,8 @@ public class ragdoldeath : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     public GameObject[] bodyParts;
+    public Sprite happyFace;
+    public GameObject headTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,7 @@ public class ragdoldeath : MonoBehaviour
             GetComponent<S_NPC>().enabled = false;
             }
             Invoke(nameof(OneSecondTimer), 1.0f);
+            SwitchHead();
         }
 
         if (collision.gameObject.tag == "npc")
@@ -53,6 +56,7 @@ public class ragdoldeath : MonoBehaviour
             }
             //Quickly re-enabling thecolliders to let the ragdoll stands on the next floor
             Invoke(nameof(QuickFloorEnabling), 0.4f);
+            SwitchHead();
         }
     }
 
@@ -70,6 +74,14 @@ public class ragdoldeath : MonoBehaviour
         for (int i = 0; i < bodyParts.Length; i++)
         {
             bodyParts[i].GetComponent<BoxCollider2D>().enabled = true;
+        }
+    }
+
+    private void SwitchHead()
+    {
+        if (headTransform != null)
+        {
+            headTransform.GetComponent<SpriteRenderer>().sprite = happyFace;
         }
     }
 }
