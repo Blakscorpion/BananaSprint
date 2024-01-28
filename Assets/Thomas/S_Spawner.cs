@@ -17,10 +17,14 @@ public class S_Spawner : MonoBehaviour
     {
         while (true)
         {
-            float spawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
-            yield return new WaitForSeconds(spawnInterval);
+            if(S_SpawnerStatic.entityAmount < 150)
+            {
+                float spawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
+                yield return new WaitForSeconds(spawnInterval);
 
-            Instantiate(entityPrefab, transform.position, Quaternion.identity);
+                Instantiate(entityPrefab, transform.position, Quaternion.identity);
+                S_SpawnerStatic.entityAmount++;
+            }
         }
     }
 }

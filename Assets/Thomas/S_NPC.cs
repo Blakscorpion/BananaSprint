@@ -25,6 +25,7 @@ public class S_NPC : MonoBehaviour
         if (gameObject.transform.position.y <= -100)
         {
             Destroy(gameObject);
+            S_SpawnerStatic.entityAmount--;
         }
         if (isWalking && _walk)
         {
