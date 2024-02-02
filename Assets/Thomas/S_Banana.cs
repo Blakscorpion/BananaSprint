@@ -28,5 +28,10 @@ public class S_Banana : S_BaseItem
     {
         this.gameObject.GetComponent<Collider2D>().enabled = true;
     }
+
+    private void Start()
+    {
+        remainingItemNumber = 5;
+    }
 }
 

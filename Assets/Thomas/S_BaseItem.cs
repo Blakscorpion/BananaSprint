@@ -6,6 +6,7 @@ public abstract class S_BaseItem : MonoBehaviour
 {
     public float force;
     public Vector3 direction;
+    public int remainingItemNumber;
 
     public Renderer renderer;
     public Texture interactedImage;

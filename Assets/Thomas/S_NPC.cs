@@ -7,16 +7,18 @@ public class S_NPC : MonoBehaviour
     public bool goRight = true;
     public float speed = 2;
     public bool isWalking = true;
+    public Animator currentAnimator;
 
     public float miniumTimeForNextMove = 0.5f, maximumTimeForNextMove = 1f;
 
     public Rigidbody2D _rb;
-    bool _walk = true;
+    public bool _walk = true;
 
     private void Start()
     {
         StartCoroutine(WalkBehavior());
         _rb = transform.GetChild(0).GetComponent<Rigidbody2D>();
+        currentAnimator= GetComponent<Animator>();
     }
     
 
@@ -31,6 +33,8 @@ public class S_NPC : MonoBehaviour
         {
             gameObject.transform.position += Vector3.right * speed * Time.deltaTime;
         }
+        if (!_walk) { currentAnimator.SetBool("isWalking", false); }
+        else { currentAnimator.SetBool("isWalking", true); }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
